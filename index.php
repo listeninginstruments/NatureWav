@@ -35,7 +35,7 @@
 
   //for IR SM4 Files:
   $year = substr($sound_file_sel, 8, 4);
-  $month = substr($sound_file_sel, 12, 2);
+  $month = date("M", mktime(0, 0, 0, substr($sound_file_sel, 12, 2)));
   $day = substr($sound_file_sel, 14, 2);
   $time = substr($sound_file_sel, 17, 2) .":".substr($sound_file_sel, 19, 2) .":".substr($sound_file_sel, 21, 2);
 
@@ -51,7 +51,7 @@ $( document ).ready(function() {
       responsive: true,
       progressColor: '#0FF',
       normalize: true,
-      cursorWidth: 4,
+      cursorWidth: 2,
       cursorColor: '#FFF',
       barGap: 1
   });
@@ -60,6 +60,12 @@ $( document ).ready(function() {
   wavesurfer.on('ready', function () {
       $("#loading").hide();
       wavesurfer.play();
+  });
+
+
+  wavesurfer.on('finish', function () {
+      $("#loading").show();
+      
   });
 
   wavesurfer.load('<?php echo $audio_files_dir ."/". $sound_file_sel; ?>');
@@ -74,22 +80,28 @@ $( document ).ready(function() {
 </head>
 
 <body>
-  <div id="sound-info-all">
-    <div id="sound-info-name">
-        <div class="file-name">file: <?php echo $sound_file_sel; ?></div>
-        <div id="sound-title">ISLE ROYAL NAT'L PARK</div>
-    </div>
-    <div id="sound-info-date">
-      <div class="date-entry wider"><?php echo $year; ?></div>
-      <div class="date-entry"><?php echo $month;//date("F", mktime(0,0,0, $month+1, 0, 0)); ?></div>
-      <div class="date-entry"><?php echo $day; ?></div>
-      <div class="date-entry wider"><?php echo $time; ?></div>
-    </div>
+<div id="wrapper">
+  <video src="bg_videos/NatureWavBG-01.mp4" muted autoplay loop></video>
+  
+  <div id="soundwraper">
+    <div id="sound-info-all">
+      <div id="sound-info-name">
+          <div class="file-name">file: <?php echo $sound_file_sel; ?></div>
+          <div id="sound-title">ISLE ROYAL NAT'L PARK</div>
+      </div>
+      <div id="sound-info-date">
+        <div class="date-entry wider"><?php echo $year; ?></div>
+        <div class="date-entry"><?php echo $month;//date("F", mktime(0,0,0, $month+1, 0, 0)); ?></div>
+        <div class="date-entry"><?php echo $day; ?></div>
+        <div class="date-entry wider"><?php echo $time; ?></div>
+      </div>
 
-  </div>
-  <div id="loading">loading...</div>
-  <div id="sound"></div>
+    </div> <!-- sound-info-all -->
+    <div id="loading">loading...</div>
+    <div id="sound"></div>
+  </div> <!-- soundwraper -->
 
+</div> <!-- wrapper -->
 
 </body>
 

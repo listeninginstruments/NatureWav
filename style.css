@@ -23,16 +23,49 @@ div {
     transition: all .5s;
 }
 
+/*------------------------------------------------------------- || Video Cover ||*/
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+#wrapper {
+
+  width:100%;
+  height:100vh;
+  /*overflow: hidden;*/
+}
+
+#wrapper video {
+  /*object-fit: contain;*/
+/*       object-fit: fill; */
+  object-fit: cover;
+  width:100%;
+  height:100%;
+}
+
+video::-webkit-media-controls {
+    display:none !important;
+  }
+
+#soundwraper{
+	position: absolute;
+    z-index: 2;
+    top:30vh;
+	left:20vw;
+}
+
 #sound-info-all{
+	
 	width:60vw;
-	margin:30vh auto 0 auto;
+	
+	/*margin:30vh auto 0 auto;*/
 	border: 20px solid #FFFFFF;
 }
 
 #loading {
 	font-weight: 700;
 	width:60vw;
-	margin:0 auto;
 	padding-top:2vw;
 	color:#FFF;
 }
@@ -82,6 +115,7 @@ div {
 	font-weight: 500;
 	padding:12px 14px 8px 14px;
 	background-color: #FFF;
+	text-transform: uppercase;
 }
 
 
@@ -91,9 +125,7 @@ div {
 }
 
 
-
  #sound {
-	width:90vw;
-	margin:4vw auto;
+	width:60vw;
 	overflow:hidden;
 }
