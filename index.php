@@ -37,7 +37,8 @@ $( document ).ready(function() {
 
 
   wavesurfer.on('ready', function () {
-      $("#loading").hide();
+      //$("#loading").hide();
+      $("#loading").html("Click anywhere on the waveform below to start play back")
       wavesurfer.play();
   });
 
@@ -94,6 +95,7 @@ $( document ).ready(function() {
       </div>
 
     </div> <!-- sound-info-all -->
+    <!-- <div class='instructions'>Once a wave form appears, click anywhere on it to start playback</div> -->
     <div id="loading">loading...</div>
     <div id="sound"></div>
   </div> <!-- soundwraper -->
